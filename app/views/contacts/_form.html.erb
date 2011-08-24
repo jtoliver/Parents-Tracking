@@ -12,7 +12,7 @@
     <%= f.text_field :staff, :value => @staff, :class => 'textbox'  %>
   </div>
   <div class="field">
-	<% @parentcom_opt = options_for_select([['Parents Assistance Line', 1], ['Email (scparents@sc.edu)', 2], ['Direct Phone Call', 2], ['In-person visit', 2], ['Other', 2]]) %>
+	<% @parentcom_opt = options_for_select([['Parents Assistance Line', 'Parents Assistance Line'], ['Email (scparents@sc.edu)', 'Email (scparents@sc.edu)'], ['Direct Phone Call', 'Direct Phone Call'], ['In-person visit', 'In-person visit'], ['Other', 'Other']]) %>
     <%= f.label :parentcom,'Type of parent communication', :class =>'main' %><br />
     <%= f.select(:parentcom, @parentcom_opt, {:prompt => 'Please choose one'}) %>
   </div>
