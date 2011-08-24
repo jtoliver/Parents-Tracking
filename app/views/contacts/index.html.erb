@@ -1,0 +1,38 @@
+<h2>Dashboard</h2>
+<table class="standard-table" id="dashboard" width="940px" border="0" cellpadding="0" cellspacing="0">
+	<thead>
+	  <tr>
+	    <th>Date</th>
+	    <th>Staff Responding</th>
+	    <th>Parent Communication</th>
+	    <th>Topic</th>
+	    <th>Comments</th>
+	    <th>Feedback given to</th>
+	    <th></th>
+	  </tr>
+	</thead>
+	<tbody>
+	<% @contacts.each do |contact| %>
+	  <tr>
+	    <td><%= contact.date.strftime('%m/%d/%Y at %I:%M%p') %></td>
+	    <td><%= contact.staff %></td>
+	    <td><%= contact.parentcom %> <%= contact.parentcomother %></td>
+	    <td>
+			<% contact.topics.each do |topic|%>
+				<%= topic.topic%><br />
+			<% end %> 
+			<%= contact.topic_other %>
+		</td>
+	    <td><%= contact.comment %></td>
+	    <td><%= contact.feedback %></td>
+	    <td>
+			<%= link_to image_tag('lens.gif'), contact %>
+	    	<%= link_to image_tag('edit.png'), edit_contact_path(contact) %>
+	    	<%= link_to image_tag('delete.gif'), contact, :confirm => 'Are you sure?', :method => :delete, :remote =>true, :class => 'delete_contact' %>
+		</td>
+	  </tr>
+	<% end %>
+	</tbody>
+</table>
+<br />
+<div class="spacer"></div>

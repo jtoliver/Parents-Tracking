@@ -1,0 +1,51 @@
+<div class="standard-form">
+<%= form_for(@contact) do |f| %>
+	<%= f.error_messages %>
+<br />
+  <div class="field">
+    <%= f.label :date, :class =>'main' %><br />
+    <%= f.text_field :date, :class => 'textbox' %>
+  </div>
+  <div class="field">
+    <%= f.label :staff, 'Staff responding', :class =>'main' %><br />
+    <%= f.text_field :staff, :value => @staff, :class => 'textbox'  %>
+  </div>
+  <div class="field">
+	<% @parentcom_opt = options_for_select([['Parent Assistance Link', 1], ['Email (scparents@sc.edu)', 2], ['Direct Phone Call', 2], ['In-person visit', 2], ['Other', 2]]) %>
+    <%= f.label :parentcom,'Type of parent communication', :class =>'main' %><br />
+    <%= f.select(:parentcom, @parentcom_opt, {:prompt => 'Please choose one'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :parentcomother, 'If none of the above, other type of parent communication', :class =>'main' %><br />
+    <%= f.text_field :parentcomother, :class => 'textbox' %>
+  </div>
+  <div class="field">
+	<%= f.label :topic,'Topic(s)', :class =>'main' %><br />
+	
+	<% for topic in Topic.all %>
+	<div class="topic">
+	    <%= check_box_tag "contact[topic_ids][]", topic.id, @contact.topics.include?(topic) %>
+		<div class=""><%= topic.topic.humanize %></div>
+		<div class="checkhelp"><%= topic.checkhelp.humanize %></div>
+	</div>
+	<% end %>
+	
+   </div>
+  <div class="spacer"></div>
+  <div class="field">
+    <%= f.label :topic_other, 'Other Topic (if not listed)', :class =>'main' %><br />
+    <%= f.text_field :topic_other, :class => 'textbox' %>
+  </div>
+  <div class="field">
+    <%= f.label :comment,'Comments or follow up needed', :class =>'main' %><br />
+    <%= f.text_area :comment, :class => 'textarea' %>
+  </div>
+  <div class="field">
+    <%= f.label :feedback,'Feedback given to', :class =>'main' %><br />
+    <%= f.text_field :feedback, :class => 'textbox' %>
+  </div>
+  <div class="field">
+    <%= f.submit @contactbtn, :id => 'emphasis', :class => 'btn' %>
+  </div>
+<% end %>
+</div>

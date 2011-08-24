@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Parents Tracking</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :all %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<%= image_tag('logo.png') %>	
+			<div class="header-controls">
+				<ul>
+				<% if current_user %>
+					<li class="first">S'ak Passe <%= current_user.username %> </li>  
+					<li><%= link_to "Account", edit_user_path(current_user.id)%></li>
+					<li><%= link_to "Logout", :logout%>	</li>	
+				<% end %>
+				</ul>	
+			</div>
+		</div>
+		<% if current_user && current_user.accesslevel == '1' %>
+		<div class="primary-navigation">
+			<ul>
+				<li class="active"><%= link_to 'Dashboard', contacts_path %></li>
+				<li><%= link_to 'New Contact', new_contact_path %></li>
+				<li><%= link_to 'Manage Users', users_path %></li>
+				<li><%= link_to 'Manage Topics', topics_path %></li>
+				<li><% link_to 'Reports', '/contacts/stats' %></li>
+			</ul>	
+		<div class="clear-both"></div>
+		</div>
+		<% end %>
+		<% if flash[:alert] %>	
+			<p class="flash flash-error"><%= notice %></p>
+		<% end %>
+		<% if flash[:notice] %>	
+			<p class="flash flash-success"><%= notice %></p>
+		<% end %>	
+		<div class="standard-block">	
+			<%= yield %>
+		</div>
+		<div class="spacer"></div>
+		<div class="footer">
+        	<%= image_tag('footer_logo.png') %>
+		</div>
+	</div>
+</body>
+</html>

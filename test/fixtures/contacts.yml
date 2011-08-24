@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2011-06-20 12:25:57
+  staff: MyString
+  parentcom: MyString
+  parentcomother: MyString
+  topic: MyString
+  topic_other: MyString
+  comment: MyText
+  feedback: MyString
+
+two:
+  date: 2011-06-20 12:25:57
+  staff: MyString
+  parentcom: MyString
+  parentcomother: MyString
+  topic: MyString
+  topic_other: MyString
+  comment: MyText
+  feedback: MyString

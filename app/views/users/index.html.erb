@@ -1,0 +1,42 @@
+<h2>Users</h2>
+<%= link_to 'New User', new_user_path %>
+<div class="spacer"></div>
+<table class="standard-table" id="userTable" width="940px" border="0" cellpadding="0" cellspacing="0">
+	<thead>	
+	  <tr>
+	    <th>Username</th>
+	    <th>Email</th>
+		<th>Access Level</th>
+	    <th>Login count</th>
+	    <th>Last login at</th>
+	    <th>Current login at</th>
+	    <th></th>
+	  </tr>
+	</thead>
+	<% @users.each do |user| %>
+	<tbody>
+	  <tr>
+	    <td><%= user.username %></td>
+	    <td><%= user.email %></td>
+		<td><%  if user.accesslevel == '1'  %> Admin <% else %> User <% end %></td>
+	    <td><%= user.login_count %></td>
+	    <td>
+			<% if !user.last_login_at.blank? %>
+				<%= user.last_login_at.strftime('%m/%d/%Y at %I:%M%p') %>
+			<% end %>	
+		</td>	
+	    <td><% if !user.current_login_at.blank? %>
+				<%= user.current_login_at.strftime('%m/%d/%Y at %I:%M%p') %>
+			<% end %>
+		</td>
+	    <td><%= link_to image_tag('lens.gif'), user %>
+	    <%= link_to image_tag('edit.png'), edit_user_path(user) %>
+	    <%= link_to image_tag('delete.gif'), user, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+	</tbody>
+	<% end %>
+</table>
+
+<br />
+<div class="spacer"></div>
+

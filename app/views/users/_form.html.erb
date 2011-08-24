@@ -1,0 +1,42 @@
+<div class="spacer"></div>
+<div class="standard-form">
+<%= form_for(@user) do |f| %>
+<%= f.error_messages%>
+<br />
+  <div class="field">
+    <%= f.label :first_name, :class =>'main' %><br />
+    <%= f.text_field :first_name, :class =>'textbox' %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name, :class =>'main' %><br />
+    <%= f.text_field :last_name, :class =>'textbox' %>
+  </div>
+  <div class="field">
+    <%= f.label :office_number, :class =>'main' %><br />
+    <%= f.text_field :office_number, :class =>'textbox' %>
+  </div>
+  <div class="field">
+    <%= f.label :username, :class =>'main' %><br />
+    <%= f.text_field :username, :class =>'textbox' %>
+  </div>
+  <div class="field">
+    <%= f.label :email, :class =>'main' %><br />
+    <%= f.text_field :email, :class =>'textbox' %>
+  </div>
+  <div class="field">
+    <%= f.label :accesslevel, :class =>'main' %><br />
+    <%= f.select(:accesslevel, '<option value="1">Admin</option> <option value="0" >User</option>', :prompt => 'Choose a level of access') %>
+  </div>
+  <div class="field">
+    <%= f.label :password, :class =>'main' %><br />
+    <%= f.password_field :password, :class =>'textbox' %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, :class =>'main' %><br />
+    <%= f.password_field :password_confirmation, :class =>'textbox' %>
+  </div>
+  <div class="field">
+    <%= f.submit @userbtn, :class => 'btn', :id => 'emphasis' %>
+  </div>
+<% end %>
+</div>

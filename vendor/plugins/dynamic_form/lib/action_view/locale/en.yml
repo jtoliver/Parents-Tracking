@@ -1,0 +1,8 @@
+en:
+  errors:
+    template:
+      header:
+        one:    "%{model} : You have a problem"
+        other:  "%{model} : You have %{count} problems"
+      # The variable :count is also available
+      body: " "

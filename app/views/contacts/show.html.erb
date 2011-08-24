@@ -1,0 +1,34 @@
+<h2><%= @contact.date.strftime('%m/%d/%Y at %I:%M%p') %></h2>
+<p id="notice"><%= notice %></p>
+
+<p>
+	<b>Staff Responding</b><br />
+  	<%= @contact.staff %>
+</p>
+<br />
+<p>
+  	<b>Type of parent communication</b><br />
+  	<%= @contact.parentcom %><%= @contact.parentcomother %>
+</p>
+<br />
+<p>
+  	<b>Topic(s)</b><br />
+	<% @contact.topics.each do |topic|%>
+		<%= topic.topic%><br />
+	<% end %>	 
+	<%= @contact.topic_other %>
+</p>
+<br />
+<p>
+  	<b>Comments</b><br />
+  	<%= @contact.comment %>
+</p>
+<br />
+<p>
+	<b>Feedback given to</b><br />
+  	<%= @contact.feedback %>
+</p>
+<br />
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

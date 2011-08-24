@@ -1,0 +1,17 @@
+<div class="standard-form">
+<%= form_for(@topic) do |f| %>
+<p class="flash flash-error"><%= f.error_messages %></p>
+<br />
+  <div class="field">
+    <%= f.label :topic, :class =>'main' %><br />
+    <%= f.text_field :topic, :class => 'textbox' %>
+  </div>
+  <div class="field">
+    <%= f.label :checkhelp, 'Description', :class =>'main' %><br />
+    <%= f.text_area :checkhelp, :class => 'textarea' %>
+  </div>
+  <div class="field">
+    <%= f.submit @topicbtn, :class => 'btn', :id => 'emphasis'  %>
+  </div>
+<% end %>
+</div>

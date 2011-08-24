@@ -1,0 +1,40 @@
+<h2>Showing <%= @user.username %></h2>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email</b><br />
+  <%= @user.email %>
+</p>
+<br />
+<p>
+  <b>Login count</b><br />
+  <%= @user.login_count %>
+</p>
+<br />
+<p>
+  <b>Failed login count</b><br />
+  <%= @user.failed_login_count %>
+</p>
+<br />
+<p>
+  <b>Last login at</b><br />
+  <%= @user.last_login_at %>
+</p>
+<br />
+<p>
+  <b>Current login at</b><br />
+  <%= @user.current_login_at %>
+</p>
+<br />
+<p>
+  <b>Current login ip</b><br />
+  <%= @user.current_login_ip %>
+</p>
+<br />
+<p>
+  <b>Last login ip</b><br />
+  <%= @user.last_login_ip %>
+</p>
+<br />
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
