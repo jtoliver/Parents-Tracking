@@ -8,7 +8,7 @@ class CreateContacts < ActiveRecord::Migration
       t.string :topic
       t.string :topic_other
       t.string :email
-      t.text :comment
+      t.text :comments
       t.string :feedback
 
       t.timestamps

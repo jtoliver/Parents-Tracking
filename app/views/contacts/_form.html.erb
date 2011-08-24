@@ -4,14 +4,15 @@
 <br />
   <div class="field">
     <%= f.label :date, :class =>'main' %><br />
-    <%= f.text_field :date, :class => 'textbox' %>
+	<% @date = Time.now.utc %>
+    <%= f.text_field :date, :class => 'textbox', :value => @date %>
   </div>
   <div class="field">
     <%= f.label :staff, 'Staff responding', :class =>'main' %><br />
     <%= f.text_field :staff, :value => @staff, :class => 'textbox'  %>
   </div>
   <div class="field">
-	<% @parentcom_opt = options_for_select([['Parent Assistance Link', 1], ['Email (scparents@sc.edu)', 2], ['Direct Phone Call', 2], ['In-person visit', 2], ['Other', 2]]) %>
+	<% @parentcom_opt = options_for_select([['Parents Assistance Line', 1], ['Email (scparents@sc.edu)', 2], ['Direct Phone Call', 2], ['In-person visit', 2], ['Other', 2]]) %>
     <%= f.label :parentcom,'Type of parent communication', :class =>'main' %><br />
     <%= f.select(:parentcom, @parentcom_opt, {:prompt => 'Please choose one'}) %>
   </div>
@@ -22,7 +23,7 @@
   <div class="field">
 	<%= f.label :topic,'Topic(s)', :class =>'main' %><br />
 	
-	<% for topic in Topic.all %>
+	<% for topic in Topic.order("topic ASC") %>
 	<div class="topic">
 	    <%= check_box_tag "contact[topic_ids][]", topic.id, @contact.topics.include?(topic) %>
 		<div class=""><%= topic.topic.humanize %></div>
