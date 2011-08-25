@@ -15,7 +15,8 @@
 	<% @contacts.each do |contact| %>
 	  <tr>
 	    <td>
-			<% if contact.created_at.to_date == Date.today %>
+			
+			<% if !contact.created_at.nil? && contact.created_at.to_date == Date.today %>
 				<%= image_tag('today.png', :class => 'todayicn') %>
 			<% end %>
 			<%= contact.date.strftime('%m/%d/%Y at %I:%M%p') %>
