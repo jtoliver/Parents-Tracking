@@ -14,13 +14,22 @@
 	<tbody>
 	<% @contacts.each do |contact| %>
 	  <tr>
-	    <td><%= contact.date.strftime('%m/%d/%Y at %I:%M%p') %></td>
+	    <td>
+			<% if contact.created_at.to_date == Date.today %>
+				<%= image_tag('today.png', :class => 'todayicn') %>
+			<% end %>
+			<%= contact.date.strftime('%m/%d/%Y at %I:%M%p') %>
+		</td>
 	    <td><%= contact.staff %></td>
 	    <td><%= contact.parentcom %> <%= contact.parentcomother %></td>
 	    <td>
-			<% contact.topics.each do |topic|%>
-				<%= topic.topic%><br />
-			<% end %> 
+			<% if !contact.topic.presence %>
+				<% contact.topics.each do |topic|%>
+					<%= topic.topic%><br />
+				<% end %>
+			<% else %>
+				<%= contact.topic %>
+			<% end %>	 
 			<%= contact.topic_other %>
 		</td>
 	    <td><%= contact.comment %></td>
