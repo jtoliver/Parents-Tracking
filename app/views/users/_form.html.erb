@@ -24,9 +24,15 @@
     <%= f.text_field :email, :class =>'textbox' %>
   </div>
   <div class="field">
+	<% if current_user && current_user.accesslevel == '1' %>
+	<% @accesslvl = options_for_select([['Admin', '1'], ['User', '0']]) %>
     <%= f.label :accesslevel, :class =>'main' %><br />
-    <%= f.select(:accesslevel, '<option value="1">Admin</option> <option value="0" >User</option>', :prompt => 'Choose a level of access') %>
+    <%= f.select(:accesslevel, @accesslvl, {:prompt => 'Please choose an access level'}) %>
+	<% else%>
+		<%= f.hidden_field :accesslevel, :value => 0 %>
+	<% end %>
   </div>
+	
   <div class="field">
     <%= f.label :password, :class =>'main' %><br />
     <%= f.password_field :password, :class =>'textbox' %>

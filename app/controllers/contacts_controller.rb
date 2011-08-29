@@ -1,24 +1,26 @@
 class ContactsController < ApplicationController
   before_filter :require_user
-  before_filter :admin_user, :only => [:index, :show, :edit, :create, :update, :destroy]
+  before_filter :admin_user, :only => [:index, :show, :edit, :update, :destroy, :stats]
 
   def index
     @contacts = Contact.order("date DESC")
   end
 
 
-  def showr
+  def show
     @contact = Contact.find(params[:id])
   end
 
   def new
     @contact = Contact.new
     @staff = current_user.first_name + " " + current_user.last_name
+    @date = Time.now.utc
   end
 
   def edit
     @contact = Contact.find(params[:id])    
     @staff = current_user.first_name + " " + current_user.last_name
+    @date = @contact.date.utc
   end
 
   def create
@@ -26,7 +28,8 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to :action => 'new', :notice => 'Contact was successfully created.' }
+        format.html { redirect_to :action => 'new' }
+        flash[:notice] = "Contact successfully created."
       else
         format.html { render :action => "new" }
       end

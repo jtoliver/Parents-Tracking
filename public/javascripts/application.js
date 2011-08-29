@@ -91,5 +91,11 @@ $ (function() {
 		$(this).closest('tr').fadeOut();
 	});
 	
+	//notification timeout
+	setTimeout(function() {
+        $(".flash").hide('blind', {}, 500)
+    }, 5000);
+  
+	
 });
 
